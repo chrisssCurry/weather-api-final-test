@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.util.List;
 
 @RestController
@@ -45,7 +46,11 @@ public class WeatherApiRestController {
      */
     @PostMapping(path = "/weather")
     public ResponseEntity<WeatherJSON> submitWeather(@RequestBody @Valid final WeatherInput weatherInput) {
-       return null;
+        return addWeather(weatherInput);
+    }
+
+    private ResponseEntity<WeatherJSON> addWeather(WeatherInput weatherInput) {
+        return weatherService.submitWeather(weatherInput);
     }
 
 
