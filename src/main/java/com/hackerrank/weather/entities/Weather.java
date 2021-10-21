@@ -3,6 +3,7 @@ package com.hackerrank.weather.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity(name = "weather")
 @Table(name = "weather")
-public class Weather {
+public class Weather implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

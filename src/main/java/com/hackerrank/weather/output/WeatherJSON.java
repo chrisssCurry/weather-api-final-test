@@ -1,9 +1,12 @@
 package com.hackerrank.weather.output;
 import com.hackerrank.weather.model.WeatherInput;
+import com.hackerrank.weather.utils.DateUtil;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import javax.validation.Valid;
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 @Builder
@@ -11,7 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class WeatherJSON {
+public class WeatherJSON implements Serializable {
     private Integer id;
 
     @Schema(name = "date", description = "The date for weather", example = "2021-09-27")
@@ -37,5 +40,17 @@ public class WeatherJSON {
                 .date(weather.getDate())
                 .temperatures(weather.getTemperatures())
                 .build();
+    }
+
+    public WeatherJSON(Integer id, LocalDate date, String city, Float lat, Float lon, String state) {
+        this.id = id;
+        this.city = city;
+        this.lat = lat;
+        this.lon = lon;
+        this.state = state;
+        this.date = DateUtil.format(date, "yyyy-MM-dd");
+//        this.temperatures = temperatures.stream()
+//                .map(temperature -> Double.valueOf(String.valueOf(temperature)))
+//                .collect(Collectors.toList());
     }
 }

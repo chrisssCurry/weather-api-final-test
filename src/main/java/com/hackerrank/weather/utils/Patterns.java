@@ -17,4 +17,7 @@ public class Patterns {
      */
     public static final String YYYY_MM_DD_REGEXP = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$";
     public static final Pattern YYYY_MM_DD_PATTERN = Pattern.compile(YYYY_MM_DD_REGEXP);
+
+    public static final String DATE_SORTING_ORDER_REGEXP = "(-date|date)";
+    public static final Pattern DATE_SORTING_ORDER_PATTERN = Pattern.compile(DATE_SORTING_ORDER_REGEXP);
 }
